@@ -4,10 +4,13 @@ body {
     margin: 0;
 }
 
+/* Updated: colored navigation bar (dark blue gradient) with improved contrast for links */
+
 .nav-bar {
     display: flex;
     flex-direction: row;
-    background: #fff;
+    /* primary navigation background */
+    background: linear-gradient(90deg, #1a237e 0%, #283593 100%);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     padding: 0 0 0 10px;
     align-items: stretch;
@@ -20,10 +23,11 @@ body {
     display: flex;
     align-items: center;
     padding: 18px 24px;
-    color: #1a237e;
+    /* light link color to contrast with dark nav background */
+    color: #ffffff;
     text-decoration: none;
     font-size: 1.1em;
-    border-right: 1px solid #e3eafc;
+    border-right: 1px solid rgba(255,255,255,0.12);
     height: 100%;
 }
 
@@ -32,9 +36,15 @@ body {
 }
 
 .nav-bar a:hover {
-    color: #0d47a1;
-    background: #e3eafc;
-    text-decoration: underline;
+    /* subtle hover/highlight while keeping good contrast */
+    color: #ffffff;
+    background: rgba(255,255,255,0.06);
+    text-decoration: none;
+}
+
+.nav-bar a:focus {
+    outline: 3px solid rgba(255,255,255,0.12);
+    outline-offset: 2px;
 }
 
 .container, .main-content, .contact-container {
@@ -44,8 +54,32 @@ body {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: left;
+    position: relative; /* enable absolute children like the profile photo */
     text-align: center;
 }
+
+    /* profile photo for resume-like layout */
+    .profile-photo {
+        width: 110px;
+        height: 110px;
+        border-radius: 8px;
+        object-fit: cover;
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        margin: 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    @media (max-width: 860px) {
+        /* smaller screens: keep photo but move it inline and centered */
+        .profile-photo {
+            position: static;
+            display: block;
+            margin: 0 auto 16px auto;
+        }
+    }
 
 h1, h2, h3 {
     color: #333;
@@ -59,6 +93,7 @@ h1, h2, h3 {
     background: #f9f9ff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     box-sizing: border-box;
+    text-align: left;
 }
 
 table {
